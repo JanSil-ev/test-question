@@ -93,12 +93,6 @@ export default function CardsScreen({ questions, onBack }) {
           <button
             onClick={handleNextCard}
             className="btn-next"
-            style={{
-              opacity: !isFlipped ? 0.5 : 1,
-              cursor: !isFlipped ? "not-allowed" : "pointer",
-            }}
-            disabled={!isFlipped}
-            title={!isFlipped ? "Сначала проверьте ответ" : ""}
           >
             {current < questions.length - 1
               ? "Следующая карточка"

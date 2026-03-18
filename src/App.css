@@ -326,15 +326,15 @@ body {
   margin-top: 20px;
 }
 
-.btn-submit:hover:not(:disabled) {
+/* .btn-submit:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-}
+} */
 
-.btn-submit:disabled {
+/* .btn-submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
+} */
 
 .answer-feedback {
   background: #fff9c4;
@@ -384,10 +384,10 @@ body {
   transition: all 0.3s;
 }
 
-.btn-next:hover {
+/* .btn-next:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-}
+} */
 
 /* ===== RESULT SCREEN ===== */
 .result-container {
