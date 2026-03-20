@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { blocks } from "./data/blocks";
 import { jsBrowserQuestions } from "./data/jsBrowser";
@@ -38,12 +38,40 @@ function App() {
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
+  const [completedBlocks, setCompletedBlocks] = useState(new Set());
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("completedBlocks");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setCompletedBlocks(new Set(parsed));
+        }
+      }
+    } catch (err) {
+      console.warn("failed to load completedBlocks", err);
+    }
+  }, []);
+
+  const toggleBlockDone = (blockId) => {
+    const updated = new Set(completedBlocks);
+    if (updated.has(blockId)) {
+      updated.delete(blockId);
+    } else {
+      updated.add(blockId);
+    }
+    setCompletedBlocks(updated);
+    localStorage.setItem("completedBlocks", JSON.stringify([...updated]));
+  };
   const [score, setScore] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState(new Set());
   const [showResult, setShowResult] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [selectedTopics, setSelectedTopics] = useState(new Set());
+
+  
 
   const getQuestionsByTopics = (allQuestions, topics, blockTopics) => {
     return allQuestions.filter((q) => topics.has(q.topic) || !blockTopics.includes(q.topic));
@@ -190,18 +218,32 @@ function App() {
           <h1 className="title">🚀 Frontend Interview Test</h1>
           <p className="subtitle">Выбери блок:</p>
                     <div className="blocks-grid">
-            {blocks.map((block) => (
-              <div
-                key={block.id}
-                className="block-card"
-                style={{ background: block.color }}
-                onClick={() => handleBlockSelect(block.id)}
-              >
-                <h3>{block.name}</h3>
-                <p>{block.description}</p>
-                <span className="block-topics-count">{block.topics.length} тем</span>
-              </div>
-            ))}
+            {blocks.map((block) => {
+              const isDone = completedBlocks.has(block.id);
+              return (
+                <div
+                  key={block.id}
+                  className={`block-card ${isDone ? "block-card-done" : ""}`}
+                  style={{ background: block.color }}
+                  onClick={() => handleBlockSelect(block.id)}
+                >
+                  <div className="block-header">
+                    <h3 style={{ wordBreak: "break-word"}}>{block.name}</h3>
+                    <button
+                      className={`block-done-btn ${isDone ? "done" : "pending"}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleBlockDone(block.id);
+                      }}
+                    >
+                      {isDone ? "✅ пройдено" : "❌ не пройдено"}
+                    </button>
+                  </div>
+                  <p>{block.description}</p>
+                  <span className="block-topics-count">{block.topics.length} тем</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

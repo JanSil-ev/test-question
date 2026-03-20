@@ -1540,6 +1540,7 @@ export const javaScriptQuestions = [
     correct: [0],
     explanation: "Метод проверяет enumerable ли свойство.",
   },
+  
   {
     id: "js-301",
     topic: "hard",

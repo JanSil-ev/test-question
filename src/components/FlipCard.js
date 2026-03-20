@@ -105,7 +105,7 @@ const styles = {
     transform: "rotateY(0deg)",
   },
   flipCardBack: {
-    position: "absolute",
+    // position: "absolute",
     width: "100%",
     minHeight: 350,
     backfaceVisibility: "hidden",
@@ -150,10 +150,9 @@ const styles = {
     overflowY: "auto",
   },
 correctAnswer: {
-  fontSize: 18,                    
+  fontSize: 15,                    
   color: "#2c3e50",                
-  marginBottom: 20,                 
-  padding: 25,                      
+  marginBottom: 20,                              
   backgroundColor: "#f0f9ff",      
   borderLeft: "5px solid #3498db", 
   borderRadius: 8,                  

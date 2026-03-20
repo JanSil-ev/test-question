@@ -22,8 +22,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  max-width: 10
-  00px;
+  max-width: auto;
   width: 100%;
 }
 
@@ -52,7 +51,7 @@ body {
 .block-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 25px;
+  padding: 18px 18px 18px 20px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
@@ -62,6 +61,44 @@ body {
   justify-content: space-between;
   min-height: 180px;
 }
+
+.block-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: baseline;
+  overflow: auto;
+}
+
+.block-done-btn {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  cursor: pointer;
+  width: 80px;
+}
+
+.block-done-btn.done {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.25);
+  color: #e8f5e9;
+}
+
+.block-done-btn.pending {
+  border-color: #f44336;
+  background: rgba(244, 67, 54, 0.25);
+  color: #ffeaea;
+}
+
+.block-card-done {
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.5), 0 2px 12px rgba(46, 125, 50, 0.25);
+  transform: translateY(-2px);
+}
+
 
 .block-card:hover {
   transform: translateY(-8px);

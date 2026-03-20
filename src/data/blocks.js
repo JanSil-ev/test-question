@@ -1,7 +1,7 @@
 export const blocks = [
   {
     id: "web-tech",
-    name: "1.Web technologies",
+    name: "1.Web-techno",
     description: "Основные веб-технологии, HTTP, браузеры и безопасность",
     topics: [],
     color: "linear-gradient(135deg, #E44D26 0%, #1572B6 50%)",
@@ -23,21 +23,21 @@ export const blocks = [
   },
   {
     id: "html",
-    name: "3.HTML",
+    name: "3. HTML",
     description: "Семантика, структура и доступность",
     topics: ["Семантика", "Структура", "Доступность", "Forms", "Media"],
     color: "linear-gradient(135deg, #E44D26 0%, #1572B6 50%)",
   },
   {
     id: "css",
-    name: "4.CSS",
+    name: "4. CSS",
     description: "Селекторы, layout, анимации и современные возможности",
     topics: ["Селекторы", "Layout", "Анимации", "Flexbox", "Grid", "Transform"],
     color: "linear-gradient(135deg, #E44D26 0%, #1572B6 50%)",
   },
   {
     id: "javascript",
-    name: "5.JavaScript",
+    name: "5. JavaScript",
     description: "Базовый синтаксис, типы данных и операторы",
     topics: [
       "Типы данных",
@@ -70,7 +70,7 @@ export const blocks = [
   },
   {
     id: "oop-fp",
-    name: "6.OOP & FP",
+    name: "6. OOP & FP",
     description: "Объектно-ориентированное и функциональное программирование",
     topics: [
       "OOP",
@@ -84,7 +84,7 @@ export const blocks = [
   },
   {
     id: "js-browser",
-    name: "7.JS in Browser",
+    name: "7. JS in Browser",
     description: "Работа с DOM, событиями, BOM и браузерными API",
     topics: [
       "DOM Structure & Traversal",
@@ -98,7 +98,7 @@ export const blocks = [
   },
   {
     id: "async-js",
-    name: "8.Async JS",
+    name: "8. Async JS",
     description: "Промисы, async/await, callback",
     topics: [
       "Основы и Event Loop",
@@ -111,7 +111,7 @@ export const blocks = [
   },
   {
     id: "ecmascript",
-    name: "9.ECMAScript",
+    name: "9. ECMA Script",
     description: "Стандарты ES6+, переменные, деструктуризация",
     topics: [
       "Основы ECMAScript",
@@ -124,7 +124,7 @@ export const blocks = [
   },
   {
     id: "architecture",
-    name: "10.Архитектуры + методологии",
+    name: "10. Архитектура",
     description: "SSR, SSG, CSR, SOLID, паттерны",
     topics: [
       "Модульность",
@@ -137,7 +137,7 @@ export const blocks = [
   },
   {
     id: "react",
-    name: "11.React",
+    name: "11. React",
     description: "Компоненты, hooks, состояние и эффекты",
     topics: [
       "React Basics",
@@ -154,21 +154,21 @@ export const blocks = [
   },
   {
     id: "state-management",
-    name: "12.State Management",
+    name: "12. State Management",
     description: "Redux, MobX, Context API и другие решения",
     topics: ["Flux & Redux Basics", "Redux Toolkit", "RTK Query", "React Query"],
     color: "linear-gradient(135deg, #764ABC 0%, #2c9b31 50%)",
   },
   {
     id: "typescript",
-    name: "13.TypeScript",
+    name: "13. TypeScript",
     description: "Типы, интерфейсы, обобщения и утилиты",
     topics: ["Types", "Interfaces", "Generics", "Utility Types", "Decorators"],
     color: "linear-gradient(135deg, #764ABC 0%, #2c9b31 50%)",
   },
   {
     id: "BOSS",
-    name: "14.BOSS",
+    name: "14. BOSS",
     description: "Boss JS задачи и алгоритмы",
     topics: ["JS code"],
     color: "linear-gradient(135deg, #000000 0%, #000000 50%)",
