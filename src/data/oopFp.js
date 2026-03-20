@@ -1,740 +1,1057 @@
 export const oopFpQuestions = [
   {
-    id: "dom-struct-001",
-    topic: "DOM Structure & Traversal",
-    question: "Что такое DOM?",
+    id: "oop-fp-001",
+    topic: "OOP vs FP Fundamentals",
+    question: "В чем принципиальная разница между объектно-ориентированным и функциональным подходами к программированию?",
     options: [
-      "Библиотека для работы с браузером",
-      "Представление HTML/XML документа в виде дерева объектов",
-      "Часть JavaScript для анимаций",
-      "Способ хранения cookie",
+      "Они полностью взаимозаменяемы",
+      "OOP строится вокруг объектов и состояния, FP — вокруг чистых функций и неизменяемости данных",
+      "FP используется только для backend, OOP — только для frontend",
+      "FP не использует функции"
     ],
     correct: [1],
     explanation:
-      "DOM (Document Object Model) — это представление HTML/XML документа в виде дерева объектов (узлов), которое JavaScript может читать и изменять.",
+      "OOP (Object-Oriented Programming) фокусируется на объектах, которые инкапсулируют состояние и поведение, что удобно для моделирования реального мира. FP (Functional Programming) строится вокруг чистых функций, избегает побочных эффектов и опирается на неизменяемость данных.\n" +
+      "На практике это влияет на тестируемость, предсказуемость и масштабируемость: FP легче тестировать и параллелить, OOP — удобнее для моделирования сложных доменных моделей.\n" +
+      "Частая ошибка кандидатов — считать, что это взаимоисключающие подходы: в реальных проектах они часто комбинируются (например, React использует функциональный стиль, но может работать с объектами)."
   },
   {
-    id: "dom-struct-002",
-    topic: "DOM Structure & Traversal",
-    question: "Какие основные типы узлов существуют в DOM?",
+    id: "oop-fp-002",
+    topic: "OOP Core Concepts",
+    question: "Что такое инкапсуляция и как она реализуется в JavaScript?",
     options: [
-      "Только элементы и текст",
-      "Элементы, текст, комментарии, документ, тип документа",
-      "Только элементы и атрибуты",
-      "Только блочные и строчные элементы",
-    ],
-    correct: [1],
-    explanation:
-      "Основные типы узлов: ELEMENT_NODE (1), TEXT_NODE (3), COMMENT_NODE (8), DOCUMENT_NODE (9), DOCUMENT_TYPE_NODE (10).",
-  },
-  {
-    id: "dom-struct-003",
-    topic: "DOM Structure & Traversal",
-    question: "Какое значение nodeType у элемента <div>?",
-    options: ["1", "2", "3", "8"],
-    correct: [0],
-    explanation: "У элемента (ELEMENT_NODE) nodeType = 1. Текст имеет тип 3, комментарии — 8.",
-  },
-  {
-    id: "dom-struct-004",
-    topic: "DOM Structure & Traversal",
-    question: "Как получить родительский элемент узла?",
-    options: [
-      "element.parent",
-      "element.parentNode или element.parentElement",
-      "element.getParent()",
-      "element.root",
-    ],
-    correct: [1],
-    explanation:
-      "parentNode возвращает родительский узел (любой тип), parentElement возвращает только родителя-элемент.",
-  },
-  {
-    id: "dom-struct-005",
-    topic: "DOM Structure & Traversal",
-    question: "Какая разница между children и childNodes?",
-    options: [
-      "children возвращает только элементы, childNodes — все узлы (включая текст и комментарии)",
-      "childNodes возвращает только элементы, children — все узлы",
-      "Это синонимы, разницы нет",
-      "children работает только с <div>, childNodes — с любыми тегами",
+      "Способ скрыть данные и реализацию, предоставляя доступ через публичный API",
+      "Механизм наследования",
+      "Способ создания объектов через классы",
+      "Способ оптимизации памяти"
     ],
     correct: [0],
     explanation:
-      "children — только дочерние элементы (HTMLCollection), childNodes — все дочерние узлы, включая текст и комментарии (NodeList).",
+      "Инкапсуляция — это сокрытие внутреннего состояния объекта и предоставление доступа только через контролируемые методы. Это снижает связанность и защищает данные от некорректного изменения.\n" +
+      "В JavaScript это реализуется через замыкания, приватные поля классов (#field), геттеры/сеттеры и модули.\n" +
+      "На практике это важно для защиты бизнес-логики и предотвращения невалидного состояния объекта. Ошибка — раскрывать внутреннее состояние напрямую, нарушая инварианты."
   },
   {
-    id: "dom-struct-006",
-    topic: "DOM Structure & Traversal",
-    question: "Как получить первый дочерний элемент?",
+    id: "oop-fp-003",
+    topic: "OOP Core Concepts",
+    question: "Что такое наследование и какие у него есть проблемы?",
     options: [
-      "element.firstChild",
-      "element.firstElementChild",
-      "element.child(0)",
-      "element.getFirstChild()",
+      "Механизм повторного использования кода через расширение классов",
+      "Способ создания функций",
+      "Метод оптимизации памяти",
+      "Способ работы с DOM"
+    ],
+    correct: [0],
+    explanation:
+      "Наследование позволяет одному классу расширять другой, переиспользуя и переопределяя его поведение. Это упрощает повторное использование кода, но увеличивает связность.\n" +
+      "Проблемы: жесткая иерархия, сложность сопровождения, хрупкость базовых классов (fragile base class problem).\n" +
+      "В современных проектах часто предпочитают композицию вместо наследования, так как она более гибкая и менее связанная."
+  },
+  {
+    id: "oop-fp-004",
+    topic: "OOP Core Concepts",
+    question: "Что такое полиморфизм и где он применяется?",
+    options: [
+      "Возможность объектов с одинаковым интерфейсом иметь разную реализацию",
+      "Способ создания объектов",
+      "Механизм хранения данных",
+      "Метод оптимизации CSS"
+    ],
+    correct: [0],
+    explanation:
+      "Полиморфизм позволяет использовать единый интерфейс для разных реализаций. Это достигается через переопределение методов или интерфейсы.\n" +
+      "В JavaScript полиморфизм реализуется через duck typing: если объект имеет нужные методы — он подходит.\n" +
+      "На практике это используется в стратегиях, плагинах и обработке различных типов данных единым способом."
+  },
+  {
+    id: "oop-fp-005",
+    topic: "Composition vs Inheritance",
+    question: "Почему композиция часто предпочтительнее наследования?",
+    options: [
+      "Потому что наследование запрещено",
+      "Композиция уменьшает связанность и повышает гибкость архитектуры",
+      "Потому что она быстрее",
+      "Потому что наследование не работает в JS"
     ],
     correct: [1],
     explanation:
-      "firstElementChild возвращает первый дочерний элемент (игнорирует текстовые узлы). firstChild может вернуть текст или комментарий.",
+      "Композиция позволяет строить сложное поведение путем комбинирования простых функций или объектов. Это снижает связанность и делает код более гибким.\n" +
+      "Наследование создает жесткую иерархию, что усложняет изменения.\n" +
+      "В реальных проектах композиция используется через HOF, hooks и функции-миксины. Ошибка — чрезмерное использование классов вместо композиции."
   },
   {
-    id: "dom-struct-007",
-    topic: "DOM Structure & Traversal",
-    question: "Как получить соседний элемент справа?",
+    id: "fp-006",
+    topic: "Functional Programming Core",
+    question: "Что такое чистая функция?",
     options: [
-      "element.nextSibling",
-      "element.nextElementSibling",
-      "element.sibling('next')",
-      "element.getNext()",
+      "Функция без аргументов",
+      "Функция без побочных эффектов и с детерминированным результатом",
+      "Функция, которая работает только с числами",
+      "Функция, вызываемая один раз"
     ],
     correct: [1],
     explanation:
-      "nextElementSibling возвращает следующий элемент-сосед. nextSibling может вернуть текстовый узел.",
+      "Чистая функция — это функция, которая для одних и тех же входных данных всегда возвращает одинаковый результат и не имеет побочных эффектов.\n" +
+      "Она не изменяет внешнее состояние и не зависит от него.\n" +
+      "Это ключ к предсказуемости, тестируемости и параллелизму. Ошибка — скрытые зависимости (например, использование глобальных переменных)."
   },
   {
-    id: "dom-struct-008",
-    topic: "DOM Structure & Traversal",
-    question: "Какие методы возвращают живую коллекцию HTMLCollection?",
+    id: "fp-007",
+    topic: "Functional Programming Core",
+    question: "Что такое иммутабельность и зачем она нужна?",
     options: [
-      "querySelectorAll",
-      "getElementsByTagName и getElementsByClassName",
-      "querySelector",
-      "Все методы возвращают живые коллекции",
-    ],
-    correct: [1],
-    explanation:
-      "getElementsByTagName и getElementsByClassName возвращают живые HTMLCollection. querySelectorAll возвращает статический NodeList.",
-  },
-  {
-    id: "dom-struct-009",
-    topic: "DOM Structure & Traversal",
-    question: "Что вернет document.querySelectorAll('.class')?",
-    options: ["HTMLCollection", "NodeList", "Array", "Object"],
-    correct: [1],
-    explanation: "querySelectorAll возвращает статический NodeList, который поддерживает forEach.",
-  },
-
-  // ================ DOM MANIPULATION (10-19) ================
-  {
-    id: "dom-manip-010",
-    topic: "DOM Manipulation",
-    question: "Как создать новый элемент в JavaScript?",
-    options: [
-      "document.newElement('div')",
-      "document.createElement('div')",
-      "new Element('div')",
-      "document.build('div')",
-    ],
-    correct: [1],
-    explanation: "Метод document.createElement(tagName) создает новый элемент с указанным тегом.",
-  },
-  {
-    id: "dom-manip-011",
-    topic: "DOM Manipulation",
-    question: "Как добавить созданный элемент в DOM?",
-    options: [
-      "element.insert()",
-      "element.add()",
-      "element.appendChild() или element.append()",
-      "element.push()",
+      "Изменяемость данных",
+      "Запрет на использование функций",
+      "Неизменяемость данных после создания",
+      "Способ работы с DOM"
     ],
     correct: [2],
     explanation:
-      "appendChild() добавляет узел в конец, append() современный метод с поддержкой текста и нескольких аргументов.",
+      "Иммутабельность означает, что данные не изменяются после создания, а при изменении создается новая копия.\n" +
+      "Это упрощает отслеживание изменений, уменьшает количество ошибок и упрощает работу с состоянием.\n" +
+      "В React и Redux иммутабельность критична для корректного обновления UI. Ошибка — мутация объектов, приводящая к багам и трудным для поиска ошибкам."
   },
   {
-    id: "dom-manip-012",
-    topic: "DOM Manipulation",
-    question: "Какая разница между innerHTML и outerHTML?",
+    id: "fp-008",
+    topic: "Functional Programming Core",
+    question: "Что такое функции высшего порядка (HOF)?",
     options: [
-      "innerHTML меняет содержимое элемента, outerHTML заменяет сам элемент вместе с содержимым",
-      "outerHTML меняет только внешний вид, innerHTML — внутренний",
-      "Это синонимы",
-      "innerHTML работает только с текстом, outerHTML — с тегами",
+      "Функции, которые возвращают числа",
+      "Функции, принимающие или возвращающие другие функции",
+      "Функции без параметров",
+      "Функции внутри классов"
+    ],
+    correct: [1],
+    explanation:
+      "Функции высшего порядка (Higher-Order Functions) принимают функции как аргументы или возвращают их.\n" +
+      "Примеры: map, filter, reduce.\n" +
+      "Они позволяют создавать абстракции и переиспользуемый код. Ошибка — злоупотребление приводит к сложному для чтения коду."
+  },
+  {
+    id: "fp-009",
+    topic: "Functional Programming Core",
+    question: "Что такое каррирование (currying)?",
+    options: [
+      "Преобразование функции с несколькими аргументами в цепочку функций с одним аргументом",
+      "Удаление аргументов функции",
+      "Оптимизация выполнения функций",
+      "Способ создания классов"
     ],
     correct: [0],
     explanation:
-      "innerHTML работает внутри элемента, outerHTML заменяет сам элемент (включая его теги).",
+      "Каррирование преобразует функцию так, что она принимает аргументы по одному, возвращая новую функцию на каждом шаге.\n" +
+      "Это удобно для частичного применения функций и создания более гибких API.\n" +
+      "Используется в FP для создания композиционных цепочек. Ошибка — усложнение без необходимости."
   },
   {
-    id: "dom-manip-013",
-    topic: "DOM Manipulation",
-    question: "Что такое атрибут (attribute) и свойство (property)?",
+    id: "fp-010",
+    topic: "Functional Programming Core",
+    question: "Что такое частичное применение функций (partial application)?",
     options: [
-      "Это одно и то же",
-      "Атрибут — в HTML, свойство — в DOM-объекте после создания",
-      "Атрибут — в CSS, свойство — в HTML",
-      "Свойство — только для чтения",
+      "Вызов функции без аргументов",
+      "Фиксация части аргументов функции и возврат новой функции",
+      "Удаление параметров",
+      "Способ оптимизации памяти"
     ],
     correct: [1],
     explanation:
-      "Атрибуты задаются в HTML (всегда строки), свойства появляются у DOM-объекта после парсинга (могут быть любого типа).",
+      "Partial application позволяет заранее задать часть аргументов функции, возвращая новую функцию с меньшим количеством параметров.\n" +
+      "Это повышает переиспользуемость и читаемость кода.\n" +
+      "В отличие от каррирования, аргументы можно передавать не по одному строго. Используется в функциональных утилитах и библиотеке lodash."
   },
   {
-    id: "dom-manip-014",
-    topic: "DOM Manipulation",
-    question: "Что произойдет при изменении свойства input.value?",
+    id: "fp-011",
+    topic: "Functional Programming Core",
+    question: "Что такое композиция функций?",
     options: [
-      "Автоматически изменится атрибут value",
-      "Атрибут value не изменится, они рассинхронизируются",
-      "Выбросится ошибка",
-      "Изменится только атрибут, свойство останется прежним",
+      "Объединение функций в цепочку, где результат одной передается другой",
+      "Создание классов",
+      "Удаление функций",
+      "Оптимизация памяти"
+    ],
+    correct: [0],
+    explanation:
+      "Композиция функций — это объединение нескольких функций в одну, где результат одной функции становится входом другой.\n" +
+      "Это основной инструмент FP для построения сложной логики из простых функций.\n" +
+      "Используется в middleware, pipelines и функциональных цепочках. Ошибка — сложные цепочки ухудшают читаемость."
+  },
+  {
+    id: "fp-012",
+    topic: "Functional Programming Core",
+    question: "Что такое побочные эффекты (side effects)?",
+    options: [
+      "Любые изменения внешнего состояния или взаимодействие с внешним миром",
+      "Ошибки в коде",
+      "Функции без аргументов",
+      "Логические ошибки"
+    ],
+    correct: [0],
+    explanation:
+      "Побочные эффекты — это изменения состояния вне функции: запись в DOM, запросы к API, изменение глобальных переменных.\n" +
+      "FP стремится минимизировать их, чтобы повысить предсказуемость.\n" +
+      "На практике побочные эффекты изолируют (например, через эффекты в React). Ошибка — смешивание логики и сайд-эффектов."
+  },
+  {
+    id: "fp-013",
+    topic: "Functional Programming Core",
+    question: "Почему чистые функции упрощают тестирование?",
+    options: [
+      "Потому что они быстрее",
+      "Потому что не зависят от внешнего состояния и дают предсказуемый результат",
+      "Потому что они используют меньше памяти",
+      "Потому что они асинхронные"
     ],
     correct: [1],
     explanation:
-      "При изменении свойства атрибут не обновляется. Атрибут хранит начальное значение, свойство — текущее.",
+      "Чистые функции легко тестировать, так как для одинаковых входных данных всегда будет одинаковый результат.\n" +
+      "Нет необходимости мокать внешние зависимости.\n" +
+      "Это упрощает unit-тестирование и повышает надежность кода. Ошибка — скрытые зависимости нарушают тестируемость."
   },
   {
-    id: "dom-manip-015",
-    topic: "DOM Manipulation",
-    question: "Как вставить HTML-строку рядом с элементом?",
+    id: "fp-014",
+    topic: "Functional Programming Core",
+    question: "Что такое редьюс (reduce) и как он связан с FP?",
     options: [
-      "element.innerHTML",
-      "element.outerHTML",
-      "element.insertAdjacentHTML(position, html)",
-      "element.addHTML()",
+      "Метод для фильтрации массива",
+      "Метод для сортировки массива",
+      "Метод для свертки данных в одно значение",
+      "Метод для поиска элементов"
     ],
     correct: [2],
     explanation:
-      "insertAdjacentHTML позволяет вставить HTML строку в указанную позицию: beforebegin, afterbegin, beforeend, afterend.",
+      "reduce агрегирует массив в одно значение с помощью аккумулятора.\n" +
+      "Это фундаментальная операция в FP, позволяющая выразить многие алгоритмы (сумма, группировка, построение объектов).\n" +
+      "Ошибки: неправильная инициализация аккумулятора и мутация внутри reduce."
   },
   {
-    id: "dom-manip-016",
-    topic: "DOM Manipulation",
-    question: "Что делает метод element.prepend()?",
+    id: "fp-015",
+    topic: "Functional Programming Core",
+    question: "Что такое рекурсия и какие у нее проблемы?",
     options: [
-      "Добавляет элемент в конец родителя",
-      "Добавляет элемент в начало родителя",
-      "Удаляет элемент из родителя",
-      "Заменяет элемент",
-    ],
-    correct: [1],
-    explanation: "prepend() добавляет узел или текст в начало родительского элемента.",
-  },
-  {
-    id: "dom-manip-017",
-    topic: "DOM Manipulation",
-    question: "Как получить элемент по ID?",
-    options: [
-      "document.getElementById('id')",
-      "document.querySelector('#id')",
-      "Оба варианта работают",
-      "Только document.querySelector",
-    ],
-    correct: [2],
-    explanation:
-      "Оба метода работают, но getElementById быстрее, а querySelector гибче (поддерживает любые селекторы).",
-  },
-  {
-    id: "dom-manip-018",
-    topic: "DOM Manipulation",
-    question: "Как удалить обработчик события с элемента?",
-    options: [
-      "element.removeEventListener(type, handler)",
-      "element.off(type, handler)",
-      "element.detachEvent(type, handler)",
-      "element.stopListening(type, handler)",
+      "Функция вызывает сама себя",
+      "Функция вызывает другую функцию",
+      "Цикл",
+      "Метод оптимизации"
     ],
     correct: [0],
     explanation:
-      "removeEventListener требует точно такую же функцию и параметры, как при добавлении. Анонимные функции удалить нельзя.",
-  },
-  {
-    id: "dom-manip-019",
-    topic: "DOM Manipulation",
-    question: "Что делает метод .focus()?",
-    options: [
-      "Удаляет элемент со страницы",
-      "Устанавливает фокус на элементе",
-      "Меняет цвет фона",
-      "Добавляет обработчик клика",
-    ],
-    correct: [1],
-    explanation:
-      "focus() устанавливает фокус на элементе (например, на поле ввода), чтобы пользователь мог сразу начать печатать.",
-  },
-
-  // ================ EVENTS (20-35) ================
-  {
-    id: "events-020",
-    topic: "Events",
-    question: "Какие существуют способы добавить обработчик события?",
-    options: [
-      "Только addEventListener",
-      "HTML-атрибуты, свойства DOM-объекта (onclick) и addEventListener",
-      "Только через HTML-атрибуты",
-      "Только через jQuery",
-    ],
-    correct: [1],
-    explanation:
-      "Три способа: 1) атрибут HTML (устарел), 2) свойство вроде element.onclick, 3) современный addEventListener.",
-  },
-  {
-    id: "events-021",
-    topic: "Events",
-    question: "Почему addEventListener лучше свойства onclick?",
-    options: [
-      "Он быстрее работает",
-      "Позволяет назначить несколько обработчиков на одно событие",
-      "Он поддерживает только мобильные браузеры",
-      "Разницы нет",
-    ],
-    correct: [1],
-    explanation:
-      "addEventListener позволяет назначить несколько обработчиков, а onclick перезаписывает предыдущий.",
-  },
-  {
-    id: "events-022",
-    topic: "Events",
-    question: "Сколько аргументов принимает addEventListener?",
-    options: [
-      "1 аргумент",
-      "2 аргумента",
-      "3 аргумента (type, listener, options)",
-      "Неограниченное количество",
-    ],
-    correct: [2],
-    explanation:
-      "addEventListener принимает 3 аргумента: тип события, функцию-обработчик и объект/флаг настроек (необязательный).",
-  },
-  {
-    id: "events-023",
-    topic: "Events",
-    question: "Что такое Event Propagation?",
-    options: [
-      "Создание нового события",
-      "Путь события через DOM: capturing → target → bubbling",
-      "Удаление обработчика события",
-      "Генерация случайных событий",
-    ],
-    correct: [1],
-    explanation:
-      "Event Propagation — это распространение события: сначала фаза перехвата (capturing), потом цель (target), затем всплытие (bubbling).",
-  },
-  {
-    id: "events-024",
-    topic: "Events",
-    question: "Что такое делегирование событий (Event Delegation)?",
-    options: [
-      "Назначение обработчика каждому элементу отдельно",
-      "Обработчик на родителе, который ловит события от детей благодаря всплытию",
-      "Передача события другому элементу",
-      "Создание цепочки событий",
-    ],
-    correct: [1],
-    explanation:
-      "Делегирование — обработчик вешается на родителя и ловит события от детей. Экономит память и работает с динамическими элементами.",
-  },
-  {
-    id: "events-025",
-    topic: "Events",
-    question: "Какая разница между event.target и event.currentTarget?",
-    options: [
-      "Это одно и то же",
-      "target — элемент, где произошло событие; currentTarget — элемент с обработчиком",
-      "target — родитель; currentTarget — ребенок",
-      "target — старый элемент; currentTarget — новый",
-    ],
-    correct: [1],
-    explanation:
-      "target указывает на элемент, который инициировал событие. currentTarget — на элемент, на котором висит обработчик.",
-  },
-  {
-    id: "events-026",
-    topic: "Events",
-    question: "Что делает e.preventDefault()?",
-    options: [
-      "Останавливает всплытие события",
-      "Отменяет действие браузера по умолчанию",
-      "Удаляет обработчик события",
-      "Останавливает все события на странице",
-    ],
-    correct: [1],
-    explanation:
-      "preventDefault отменяет стандартное поведение браузера: переход по ссылке, отправку формы, выделение текста и т.д.",
-  },
-  {
-    id: "events-027",
-    topic: "Events",
-    question: "Что делает e.stopPropagation()?",
-    options: [
-      "Отменяет действие по умолчанию",
-      "Останавливает всплытие события к родителям",
-      "Удаляет все обработчики на элементе",
-      "Блокирует клики",
-    ],
-    correct: [1],
-    explanation:
-      "stopPropagation останавливает дальнейшее распространение события (не дает ему всплывать к родителям).",
-  },
-  {
-    id: "events-028",
-    topic: "Events",
-    question: "Какая разница между stopPropagation() и stopImmediatePropagation()?",
-    options: [
-      "Разницы нет",
-      "stopPropagation останавливает всплытие, stopImmediatePropagation дополнительно отключает другие обработчики на этом же элементе",
-      "stopImmediatePropagation только для мобильных устройств",
-      "stopPropagation отменяет действие по умолчанию",
-    ],
-    correct: [1],
-    explanation:
-      "stopPropagation — только остановка всплытия. stopImmediatePropagation — остановка всплытия + отключение всех остальных обработчиков на текущем элементе.",
-  },
-  {
-    id: "events-029",
-    topic: "Events",
-    question: "Какая разница между событиями load и DOMContentLoaded?",
-    options: [
-      "Это синонимы",
-      "DOMContentLoaded — DOM готов, load — все ресурсы загружены",
-      "load — DOM готов, DOMContentLoaded — все ресурсы",
-      "DOMContentLoaded для CSS, load для JS",
-    ],
-    correct: [1],
-    explanation:
-      "DOMContentLoaded срабатывает после загрузки и парсинга HTML. load — после загрузки всех ресурсов (картинки, стили, iframe).",
-  },
-  {
-    id: "events-030",
-    topic: "Events",
-    question: "Какие события относятся к событиям мыши?",
-    options: [
-      "click, dblclick, mousemove",
-      "keydown, keyup",
-      "load, DOMContentLoaded",
-      "submit, change",
-    ],
-    correct: [0],
-    explanation:
-      "События мыши: click, dblclick, mousedown, mouseup, mousemove, mouseenter, mouseleave и другие.",
-  },
-  {
-    id: "events-031",
-    topic: "Events",
-    question: "Какие события относятся к событиям клавиатуры?",
-    options: ["click, dblclick", "keydown, keyup", "scroll, resize", "touchstart, touchmove"],
-    correct: [1],
-    explanation:
-      "Основные события клавиатуры: keydown (нажатие) и keyup (отпускание). keypress устарел.",
-  },
-  {
-    id: "events-032",
-    topic: "Events",
-    question: "Какие события относятся к событиям формы?",
-    options: [
-      "click, dblclick",
-      "input, change, submit, focus, blur",
-      "load, DOMContentLoaded",
-      "scroll, resize",
-    ],
-    correct: [1],
-    explanation:
-      "События форм: input (ввод), change (изменение), submit (отправка), focus (фокус), blur (потеря фокуса).",
-  },
-  {
-    id: "events-033",
-    topic: "Events",
-    question: "Что делает опция { once: true } в addEventListener?",
-    options: [
-      "Обработчик сработает только один раз и удалится",
-      "Обработчик будет работать постоянно",
-      "Обработчик сработает только на мобильных",
-      "Обработчик сработает только при загрузке",
-    ],
-    correct: [0],
-    explanation: "Опция once автоматически удаляет обработчик после первого срабатывания.",
-  },
-  {
-    id: "events-034",
-    topic: "Events",
-    question: "Что делает опция { passive: true } в addEventListener?",
-    options: [
-      "Обработчик не может вызвать preventDefault",
-      "Обработчик работает только в фоне",
-      "Обработчик удаляется после выполнения",
-      "Обработчик игнорирует события",
-    ],
-    correct: [0],
-    explanation:
-      "passive: true указывает, что обработчик не вызовет preventDefault, улучшая производительность прокрутки.",
-  },
-  {
-    id: "events-035",
-    topic: "Events",
-    question: "Как узнать, был ли вызван preventDefault на событии?",
-    options: [
-      "event.isDefaultPrevented()",
-      "event.defaultPrevented",
-      "event.prevented",
-      "event.isPrevented()",
-    ],
-    correct: [1],
-    explanation:
-      "Свойство event.defaultPrevented возвращает true, если на событии был вызван preventDefault.",
-  },
-
-  // ================ BROWSER ENVIRONMENT (36-45) ================
-  {
-    id: "browser-036",
-    topic: "Browser Environment",
-    question: "Что такое BOM (Browser Object Model)?",
-    options: [
-      "Модель DOM-дерева",
-      "Набор объектов для работы с браузером: window, navigator, location, history",
-      "Библиотека для анимаций",
-      "Способ хранения данных",
-    ],
-    correct: [1],
-    explanation:
-      "BOM — объектная модель браузера, включающая window, navigator, location, history, screen и диалоговые окна.",
-  },
-  {
-    id: "browser-037",
-    topic: "Browser Environment",
-    question: "Какие объекты входят в BOM?",
-    options: [
-      "document, body, head",
-      "window, navigator, location, history, screen",
-      "div, span, p",
-      "Array, Object, Function",
-    ],
-    correct: [1],
-    explanation:
-      "BOM включает: window (глобальный объект), navigator (инфо о браузере), location (URL), history (история), screen (экран).",
-  },
-  {
-    id: "browser-038",
-    topic: "Browser Environment",
-    question: "Для чего используется свойство window.navigator?",
-    options: [
-      "Для навигации по странице",
-      "Для получения информации о браузере и устройстве",
-      "Для изменения URL",
-      "Для управления историей",
-    ],
-    correct: [1],
-    explanation:
-      "navigator содержит информацию о браузере, ОС, userAgent, геолокации, батарее и т.д.",
-  },
-  {
-    id: "browser-039",
-    topic: "Browser Environment",
-    question: "Какие координаты мыши относительно окна браузера (viewport)?",
-    options: ["screenX, screenY", "clientX, clientY", "pageX, pageY", "offsetX, offsetY"],
-    correct: [1],
-    explanation: "clientX/clientY — координаты относительно видимой области окна (viewport).",
-  },
-  {
-    id: "browser-040",
-    topic: "Browser Environment",
-    question: "Какие координаты мыши учитывают прокрутку страницы?",
-    options: ["screenX, screenY", "clientX, clientY", "pageX, pageY", "offsetX, offsetY"],
-    correct: [2],
-    explanation: "pageX/pageY — координаты относительно документа, включая прокрутку.",
-  },
-  {
-    id: "browser-041",
-    topic: "Browser Environment",
-    question: "Что возвращает метод element.getBoundingClientRect()?",
-    options: [
-      "Координаты элемента относительно документа",
-      "Координаты элемента относительно окна (viewport) и его размеры",
-      "Только ширину и высоту",
-      "Координаты мыши",
-    ],
-    correct: [1],
-    explanation:
-      "Метод возвращает объект с top, left, right, bottom, width, height относительно viewport.",
-  },
-  {
-    id: "browser-042",
-    topic: "Browser Environment",
-    question: "Как получить координаты элемента относительно документа (с учетом скролла)?",
-    options: [
-      "rect.top + window.scrollY, rect.left + window.scrollX",
-      "rect.pageTop, rect.pageLeft",
-      "element.documentTop()",
-      "rect.viewportToDocument()",
-    ],
-    correct: [0],
-    explanation:
-      "Нужно добавить текущую прокрутку: rect.top + window.scrollY, rect.left + window.scrollX.",
-  },
-  {
-    id: "browser-043",
-    topic: "Browser Environment",
-    question: "Как использовать media-выражения в JavaScript?",
-    options: [
-      "window.media()",
-      "window.matchMedia(mediaQueryString)",
-      "document.mediaQuery()",
-      "CSS.media()",
-    ],
-    correct: [1],
-    explanation:
-      "window.matchMedia(query) возвращает объект MediaQueryList с методом matches и возможностью подписки на изменения через addEventListener.",
-  },
-  {
-    id: "browser-044",
-    topic: "Browser Environment",
-    question: "Что такое Feature Detection?",
-    options: [
-      "Анализ строки user-agent",
-      "Прямая проверка поддержки функции (например, 'geolocation' in navigator)",
-      "Предположение о поддержке на основе других свойств",
-      "Определение браузера по названию",
-    ],
-    correct: [1],
-    explanation:
-      "Feature detection проверяет наличие конкретной возможности напрямую. Это самый надежный способ.",
-  },
-  {
-    id: "browser-045",
-    topic: "Browser Environment",
-    question: "Почему не рекомендуется использовать анализ user-agent?",
-    options: [
-      "Это слишком медленно",
-      "Строку легко подделать, браузеры меняют формат, это не говорит о поддержке функций",
-      "User-agent недоступен в некоторых браузерах",
-      "Это устаревший метод, но он надежен",
-    ],
-    correct: [1],
-    explanation:
-      "User-agent легко подделать, браузеры меняют формат строк, и наличие определенного UA не гарантирует поддержку функций.",
-  },
-
-  // ================ PERFORMANCE & LOADING (46-50) ================
-  {
-    id: "perf-046",
-    topic: "Performance & Loading",
-    question: "Что происходит первым в Critical Rendering Path?",
-    options: ["Layout", "Parsing HTML", "Paint", "JS execution"],
-    correct: [1],
-    explanation: "CRP начинается с парсинга HTML, на основе которого строится DOM.",
-  },
-  {
-    id: "perf-047",
-    topic: "Performance & Loading",
-    question: "Что такое IntersectionObserver?",
-    options: [
-      "API для наблюдения за пересечением элемента с областью видимости",
-      "Событие клика",
-      "Метод для создания анимаций",
-      "Спорт",
-      "Способ загрузки изображений",
-    ],
-    correct: [0],
-    explanation:
-      "IntersectionObserver позволяет асинхронно отслеживать пересечение элемента с его родителем или viewport.",
-  },
-  {
-    id: "perf-048",
-    topic: "Performance & Loading",
-    question: "Где лучше использовать IntersectionObserver?",
-    options: [
-      "Для обработки кликов",
-      "Для ленивой загрузки изображений и бесконечной прокрутки",
-      "Для валидации форм",
-      "Для анимации по таймеру",
-    ],
-    correct: [1],
-    explanation:
-      "IntersectionObserver идеален для lazy loading, infinite scroll, отслеживания появления элементов в viewport.",
-  },
-  {
-    id: "perf-049",
-    topic: "Performance & Loading",
-    question: "Какие ограничения у window.close()?",
-    options: [
-      "Можно закрыть любое окно",
-      "Можно закрыть только окно, открытое скриптом (через window.open)",
-      "Работает только в мобильных браузерах",
-      "Нет ограничений",
-    ],
-    correct: [1],
-    explanation:
-      "window.close() может закрыть только окно, которое было открыто этим же скриптом. Попытка закрыть основное окно игнорируется.",
-  },
-  {
-    id: "perf-050",
-    topic: "Performance & Loading",
-    question: "Для чего используется свойство document.forms?",
-    options: [
-      "Для создания форм",
-      "Для получения коллекции всех форм на странице",
-      "Для отправки форм",
-      "Для стилизации форм",
-    ],
-    correct: [1],
-    explanation:
-      "document.forms возвращает HTMLCollection всех форм на странице (элементов <form>).",
-  },
-
-  // ================ COLLECTIONS & APIS (51-55) ================
-  {
-    id: "apis-051",
-    topic: "Collections & APIs",
-    question: "Какая разница между HTMLCollection и NodeList?",
-    options: [
-      "HTMLCollection — только элементы (живая), NodeList — любые узлы (чаще статический)",
-      "Это одно и то же",
-      "HTMLCollection — статическая, NodeList — живая",
-      "HTMLCollection для текста, NodeList для элементов",
-    ],
-    correct: [0],
-    explanation:
-      "HTMLCollection (живая) содержит только элементы, NodeList (обычно статический) может содержать любые узлы и поддерживает forEach.",
-  },
-  {
-    id: "apis-052",
-    topic: "Collections & APIs",
-    question: "Что возвращает getElementsByTagName?",
-    options: ["NodeList", "HTMLCollection", "Array", "Object"],
-    correct: [1],
-    explanation:
-      "getElementsByTagName возвращает живую HTMLCollection, которая обновляется при изменении DOM.",
-  },
-  {
-    id: "apis-053",
-    topic: "Collections & APIs",
-    question: "Какая разница между .submit() и .requestSubmit()?",
-    options: [
-      "submit() отправляет форму без событий, requestSubmit() инициирует submit событие и проверку валидации",
-      "Это одно и то же",
-      "submit() для GET, requestSubmit() для POST",
-      "submit() асинхронный, requestSubmit() синхронный",
-    ],
-    correct: [0],
-    explanation:
-      "submit() отправляет форму, игнорируя валидацию и не генерируя submit событие. requestSubmit() ведет себя как клик по кнопке submit.",
-  },
-  {
-    id: "apis-054",
-    topic: "Collections & APIs",
-    question: "Что такое URLSearchParams?",
-    options: [
-      "API для работы с параметрами URL (query string)",
-      "Метод для кодирования URL",
-      "Способ валидации URL",
-      "Библиотека для роутинга",
-    ],
-    correct: [0],
-    explanation:
-      "URLSearchParams позволяет удобно работать с query-параметрами URL: получать, добавлять, удалять, сортировать параметры.",
-  },
-  {
-    id: "apis-055",
-    topic: "Collections & APIs",
-    question: "Какая разница между JSON и XML?",
-    options: [
-      "JSON легче, основан на JavaScript, XML — более громоздкий язык разметки",
-      "XML быстрее парсится",
-      "Это одно и то же",
-      "JSON только для чисел, XML для текста",
-    ],
-    correct: [0],
-    explanation:
-      "JSON — легковесный формат обмена данными, основанный на синтаксисе JavaScript. XML — более тяжелый язык разметки с тегами.",
-  },
+      "Рекурсия — это когда функция вызывает сама себя для решения подзадачи.\n" +
+      "Она часто используется в FP для обхода структур данных (деревья, графы).\n" +
+      "Проблемы: риск переполнения стека, сложность отладки. Альтернатива — итерации или хвостовая рекурсия."
+  },{
+  id: "fp-016",
+  topic: "Functional Programming Advanced",
+  question: "Что такое чистая функция с точки зрения побочных эффектов и как их полностью устранить?",
+  options: [
+    "Функция без аргументов",
+    "Функция, которая использует только примитивные типы",
+    "Функция без побочных эффектов и с детерминированным результатом",
+    "Функция, которая не использует return"
+  ],
+  correct: [2],
+  explanation:
+    "Чистая функция не зависит от внешнего состояния и не изменяет его, что делает ее полностью предсказуемой.\n" +
+    "Для устранения побочных эффектов используют изоляцию: эффекты (запросы, работа с DOM) выносятся за пределы бизнес-логики.\n" +
+    "Это особенно важно в архитектурах вроде React + Redux, где состояние должно обновляться предсказуемо.\n" +
+    "Частая ошибка — считать функцию чистой, если она просто «не трогает глобальные переменные», но при этом работает с мутируемыми объектами."
+},
+{
+  id: "fp-017",
+  topic: "Functional Programming Advanced",
+  question: "Как работает принцип неизменяемости (immutability) и почему он критичен в UI-фреймворках?",
+  options: [
+    "Данные можно изменять, но только один раз",
+    "Данные нельзя изменять после создания — создается новая копия",
+    "Данные хранятся в immutable базе",
+    "Данные можно изменять только в async-функциях"
+  ],
+  correct: [1],
+  explanation:
+    "Иммутабельность означает, что при изменении состояния создается новая копия данных, а не модифицируется существующая.\n" +
+    "Это позволяет легко отслеживать изменения (например, через shallow comparison в React).\n" +
+    "В UI-фреймворках это важно для оптимизации ререндеров и предотвращения неожиданных багов.\n" +
+    "Типичная ошибка — мутировать вложенные объекты, что ломает механизм сравнения (например, в Redux)."
+},
+{
+  id: "fp-018",
+  topic: "Functional Programming Advanced",
+  question: "Что такое referential transparency?",
+  options: [
+    "Способ оптимизации памяти",
+    "Свойство выражения, при котором его можно заменить результатом без изменения поведения программы",
+    "Способ работы с DOM",
+    "Механизм наследования"
+  ],
+  correct: [1],
+  explanation:
+    "Referential transparency означает, что выражение можно заменить его значением без изменения поведения программы.\n" +
+    "Это свойство достигается только при использовании чистых функций.\n" +
+    "Оно упрощает рефакторинг, кэширование и оптимизацию (memoization).\n" +
+    "Если функция зависит от времени или внешнего состояния — это свойство нарушается."
+},
+{
+  id: "fp-019",
+  topic: "Functional Programming Advanced",
+  question: "Что такое memoization и когда она используется?",
+  options: [
+    "Кэширование результатов функции на основе входных аргументов",
+    "Сортировка данных",
+    "Удаление дубликатов",
+    "Асинхронная обработка данных"
+  ],
+  correct: [0],
+  explanation:
+    "Memoization — это техника кэширования результатов функции для одинаковых входных аргументов.\n" +
+    "Используется для оптимизации дорогостоящих вычислений.\n" +
+    "Важно: функция должна быть чистой, иначе кэш может вернуть некорректные данные.\n" +
+    "В реальных проектах используется в React (useMemo), вычислительных алгоритмах и кешировании API."
+},
+{
+  id: "fp-020",
+  topic: "Functional Programming Advanced",
+  question: "Что такое lazy evaluation и где она применяется?",
+  options: [
+    "Выполнение всех вычислений сразу",
+    "Выполнение вычислений только при необходимости",
+    "Удаление вычислений",
+    "Асинхронный вызов функций"
+  ],
+  correct: [1],
+  explanation:
+    "Lazy evaluation — это стратегия, при которой вычисления откладываются до момента, когда результат действительно нужен.\n" +
+    "Это позволяет оптимизировать производительность и избежать лишних вычислений.\n" +
+    "Используется в генераторах, итераторах и некоторых FP-библиотеках.\n" +
+    "Ошибка — неправильная работа с побочными эффектами внутри ленивых вычислений."
+},
+{
+  id: "fp-021",
+  topic: "Functional Programming Advanced",
+  question: "Что такое транзакционное мышление в FP?",
+  options: [
+    "Работа только с базами данных",
+    "Изменение состояния как последовательность атомарных операций",
+    "Работа только с функциями",
+    "Отказ от функций"
+  ],
+  correct: [1],
+  explanation:
+    "Транзакционный подход рассматривает изменения состояния как атомарные операции.\n" +
+    "Каждое изменение — это новая версия состояния, а не мутация.\n" +
+    "Это критично для предсказуемости, особенно в сложных UI и state-менеджерах.\n" +
+    "Ошибка — частичные изменения состояния, которые могут привести к inconsistent state."
+},
+{
+  id: "fp-022",
+  topic: "Functional Programming Advanced",
+  question: "Как реализуется pipeline в функциональном программировании?",
+  options: [
+    "Через классы",
+    "Через последовательное применение функций",
+    "Через циклы",
+    "Через DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Pipeline — это цепочка функций, где результат одной передается следующей.\n" +
+    "Это делает код читаемым и декларативным.\n" +
+    "В JS реализуется через compose/pipe функции.\n" +
+    "Ошибка — создание слишком длинных цепочек, ухудшающих читаемость."
+},
+{
+  id: "oop-fp-023",
+  topic: "OOP vs FP Comparison",
+  question: "Когда предпочтительно использовать OOP, а когда FP?",
+  options: [
+    "OOP — всегда лучше",
+    "FP — всегда лучше",
+    "Зависит от задачи: OOP для сложных доменных моделей, FP для обработки данных и предсказуемой логики",
+    "Использовать только один подход в проекте"
+  ],
+  correct: [2],
+  explanation:
+    "Выбор зависит от задачи. OOP удобен для моделирования сущностей с состоянием и поведением (например, UI-компоненты, бизнес-объекты).\n" +
+    "FP лучше подходит для обработки данных, трансформаций и работы с потоками.\n" +
+    "В реальных проектах используется гибридный подход.\n" +
+    "Ошибка — догматичное следование одному подходу без учета контекста."
+},
+{
+  id: "oop-fp-024",
+  topic: "OOP vs FP Architecture",
+  question: "Как можно сочетать OOP и FP в одной архитектуре?",
+  options: [
+    "Никак",
+    "Использовать только OOP",
+    "Использовать FP для логики и OOP для структуры объектов",
+    "Использовать только FP"
+  ],
+  correct: [2],
+  explanation:
+    "Гибридный подход — наиболее распространенный в индустрии.\n" +
+    "OOP используется для моделирования сущностей (например, классы), а FP — для обработки данных и бизнес-логики.\n" +
+    "Это повышает читаемость, тестируемость и гибкость системы.\n" +
+    "Пример: React — функциональный UI + объектные концепции внутри (компоненты, классы в legacy-коде)."
+},
+{
+  id: "fp-025",
+  topic: "Functional Programming Advanced",
+  question: "Какие основные проблемы возникают при использовании иммутабельности?",
+  options: [
+    "Снижение безопасности",
+    "Проблемы с производительностью из-за создания копий",
+    "Сложность чтения кода",
+    "Невозможность использования функций"
+  ],
+  correct: [1],
+  explanation:
+    "Иммутабельность требует создания копий данных, что может влиять на производительность и память.\n" +
+    "Для оптимизации используются структуры данных с structural sharing (например, immutable.js).\n" +
+    "В React это решается через shallow comparison и оптимизацию ререндеров.\n" +
+    "Ошибка — глубокое копирование больших структур без необходимости."
+},{
+  id: "fp-026",
+  topic: "Functional Programming Advanced",
+  question: "Что такое монады и какую проблему они решают в функциональном программировании?",
+  options: [
+    "Это тип цикла для оптимизации",
+    "Это абстракция для работы с эффектами и последовательной композицией вычислений",
+    "Это способ наследования",
+    "Это метод работы с DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Монады — это абстракция, которая позволяет последовательно комбинировать вычисления, особенно те, которые имеют побочные эффекты или контекст (например, null, async, ошибки).\n" +
+    "Они позволяют «обернуть» значение в контекст и безопасно работать с ним без проверки на каждом шаге.\n" +
+    "Примеры: Promise (асинхронная монада), Maybe/Optional (работа с null), Either (обработка ошибок).\n" +
+    "Частая ошибка — воспринимать монады как чисто теоретическую концепцию, хотя они активно используются в Promise и async/await."
+},
+{
+  id: "fp-027",
+  topic: "Functional Programming Advanced",
+  question: "Как Promise связан с функциональным программированием?",
+  options: [
+    "Promise — это классический объект без связи с FP",
+    "Promise реализует монаду и позволяет работать с асинхронными вычислениями в функциональном стиле",
+    "Promise используется только в OOP",
+    "Promise заменяет функции"
+  ],
+  correct: [1],
+  explanation:
+    "Promise можно рассматривать как монаду, так как он позволяет последовательно цеплять вычисления через then.\n" +
+    "Это обеспечивает композицию асинхронных операций без вложенности (callback hell).\n" +
+    "В сочетании с async/await код становится более декларативным.\n" +
+    "Ошибка — смешивать синхронную и асинхронную логику без четкого контроля потоков."
+},
+{
+  id: "fp-028",
+  topic: "Functional Programming Advanced",
+  question: "Что такое functor и как он используется?",
+  options: [
+    "Функция, которая ничего не возвращает",
+    "Структура, поддерживающая map для применения функции к обернутому значению",
+    "Класс в JavaScript",
+    "Тип события"
+  ],
+  correct: [1],
+  explanation:
+    "Функтор — это структура данных, которая поддерживает операцию map, позволяя применять функцию к значению внутри контекста.\n" +
+    "Это базовый строительный блок для более сложных абстракций, таких как монады.\n" +
+    "Пример — массивы в JS (Array.map).\n" +
+    "Ошибка — игнорирование контекста при работе с функциями внутри functor."
+},
+{
+  id: "fp-029",
+  topic: "Functional Programming Advanced",
+  question: "Что такое reduce как универсальный механизм в FP?",
+  options: [
+    "Метод только для суммирования",
+    "Метод для удаления элементов",
+    "Обобщенный механизм свертки данных в одно значение",
+    "Метод сортировки"
+  ],
+  correct: [2],
+  explanation:
+    "reduce — это фундаментальный инструмент, который может реализовать map, filter и даже более сложные алгоритмы.\n" +
+    "Он принимает аккумулятор и функцию, которая определяет, как накапливать результат.\n" +
+    "Это делает его универсальным инструментом в FP.\n" +
+    "Ошибка — использовать reduce там, где более читаемы специализированные методы."
+},
+{
+  id: "fp-030",
+  topic: "Functional Programming Advanced",
+  question: "Как реализовать immutability в JavaScript на практике?",
+  options: [
+    "Использовать var",
+    "Использовать Object.freeze и spread оператор",
+    "Использовать только let",
+    "Использовать функции без return"
+  ],
+  correct: [1],
+  explanation:
+    "Иммутабельность реализуется через создание копий объектов с помощью spread (...), Object.assign или специализированных библиотек.\n" +
+    "Object.freeze помогает предотвратить изменения объекта, но работает только на поверхностном уровне.\n" +
+    "Для глубокой иммутабельности используются immutable структуры или библиотеки.\n" +
+    "Ошибка — поверхностная иммутабельность при наличии вложенных объектов."
+},
+{
+  id: "oop-031",
+  topic: "OOP Advanced",
+  question: "Что такое SOLID принципы и зачем они нужны?",
+  options: [
+    "Набор паттернов проектирования",
+    "Набор принципов для построения гибкой и поддерживаемой архитектуры",
+    "Способ оптимизации кода",
+    "Метод работы с DOM"
+  ],
+  correct: [1],
+  explanation:
+    "SOLID — это пять принципов проектирования, направленных на создание масштабируемой и поддерживаемой архитектуры.\n" +
+    "Они помогают уменьшить связанность, повысить расширяемость и упростить тестирование.\n" +
+    "Используются в OOP-дизайне для построения чистой архитектуры.\n" +
+    "Ошибка — формальное следование принципам без учета контекста проекта."
+},
+{
+  id: "oop-032",
+  topic: "OOP Advanced",
+  question: "Что такое принцип единственной ответственности (SRP)?",
+  options: [
+    "Класс должен выполнять только одну задачу",
+    "Класс должен быть маленьким",
+    "Класс должен наследоваться от одного родителя",
+    "Функция должна быть чистой"
+  ],
+  correct: [0],
+  explanation:
+    "SRP гласит, что у класса должна быть только одна причина для изменения.\n" +
+    "Это улучшает читаемость, тестируемость и снижает связанность.\n" +
+    "На практике это означает разделение логики на отдельные модули.\n" +
+    "Ошибка — создание «бог-классов» с множеством обязанностей."
+},
+{
+  id: "oop-033",
+  topic: "OOP Advanced",
+  question: "Что такое принцип открытости/закрытости (OCP)?",
+  options: [
+    "Класс должен быть закрыт для изменений и открыт для расширения",
+    "Класс должен быть полностью закрыт",
+    "Класс должен использовать только private методы",
+    "Класс должен быть immutable"
+  ],
+  correct: [0],
+  explanation:
+    "OCP означает, что поведение системы можно расширять без изменения существующего кода.\n" +
+    "Это достигается через интерфейсы, абстракции и полиморфизм.\n" +
+    "На практике это снижает риск багов при добавлении нового функционала.\n" +
+    "Ошибка — изменение существующего кода вместо добавления расширений."
+},
+{
+  id: "oop-034",
+  topic: "OOP Advanced",
+  question: "Что такое принцип подстановки Лисков (LSP)?",
+  options: [
+    "Подклассы должны полностью заменять базовый класс без нарушения логики",
+    "Подклассы должны быть быстрее",
+    "Подклассы должны иметь меньше методов",
+    "Подклассы должны использовать меньше памяти"
+  ],
+  correct: [0],
+  explanation:
+    "LSP утверждает, что объекты подклассов должны быть взаимозаменяемы с объектами базового класса.\n" +
+    "Если это нарушается, возникает неожиданное поведение и ошибки.\n" +
+    "Это важно для корректного использования наследования.\n" +
+    "Ошибка — создание подклассов, которые ломают контракт базового класса."
+},
+{
+  id: "oop-035",
+  topic: "OOP Advanced",
+  question: "Что такое принцип разделения интерфейсов (ISP)?",
+  options: [
+    "Один большой интерфейс лучше",
+    "Лучше много специализированных интерфейсов, чем один общий",
+    "Интерфейсы не нужны",
+    "Интерфейсы используются только в backend"
+  ],
+  correct: [1],
+  explanation:
+    "ISP гласит, что клиенты не должны зависеть от интерфейсов, которые они не используют.\n" +
+    "Это снижает связанность и упрощает поддержку.\n" +
+    "На практике интерфейсы делятся на более мелкие и специализированные.\n" +
+    "Ошибка — создание перегруженных интерфейсов с множеством методов."
+},{
+  id: "oop-fp-036",
+  topic: "OOP vs FP Advanced",
+  question: "Как замыкания (closures) используются в функциональном программировании и какие проблемы они могут создавать?",
+  options: [
+    "Для создания классов",
+    "Для хранения состояния внутри функции без использования глобальных переменных",
+    "Для ускорения выполнения кода",
+    "Для работы с DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Замыкания позволяют функции «запоминать» переменные из внешней области видимости даже после завершения этой области. Это фундаментальный механизм для FP, так как он позволяет создавать функции с внутренним состоянием без использования глобальных переменных.\n" +
+    "На практике closures используются в каррировании, фабричных функциях и создании приватных данных.\n" +
+    "Однако замыкания могут приводить к утечкам памяти, если ссылки на внешние данные сохраняются дольше, чем нужно.\n" +
+    "Ошибка — случайное удержание больших объектов в замыкании, что мешает сборке мусора."
+},
+{
+  id: "fp-037",
+  topic: "Functional Programming Advanced",
+  question: "Что такое pipeline (pipe) и compose, и в чем между ними разница?",
+  options: [
+    "Это одно и то же",
+    "pipe — слева направо, compose — справа налево",
+    "pipe работает только с массивами",
+    "compose используется только в OOP"
+  ],
+  correct: [1],
+  explanation:
+    "pipe и compose — это функции для композиции функций, но различаются направлением выполнения.\n" +
+    "pipe выполняет функции слева направо, что соответствует естественному чтению кода.\n" +
+    "compose выполняет функции справа налево и чаще используется в математических абстракциях.\n" +
+    "Оба подхода используются для построения декларативных цепочек обработки данных.\n" +
+    "Ошибка — смешивание направлений, что приводит к неожиданным результатам."
+},
+{
+  id: "fp-038",
+  topic: "Functional Programming Advanced",
+  question: "Как работают побочные эффекты в React и как их контролировать?",
+  options: [
+    "Через классы",
+    "Через useEffect и вынесение эффектов из чистых функций",
+    "Через глобальные переменные",
+    "Через события DOM"
+  ],
+  correct: [1],
+  explanation:
+    "В React побочные эффекты (запросы, подписки, таймеры) выносятся в useEffect, чтобы отделить их от чистого рендера.\n" +
+    "Это соответствует принципам FP: render-функции должны быть чистыми.\n" +
+    "Контроль зависимостей в useEffect критически важен для предотвращения бесконечных циклов и утечек.\n" +
+    "Ошибка — неправильный массив зависимостей или игнорирование cleanup-функции."
+},
+{
+  id: "oop-fp-039",
+  topic: "Architecture",
+  question: "Как функциональный подход влияет на тестирование?",
+  options: [
+    "Усложняет тестирование",
+    "Упрощает тестирование за счет отсутствия состояния и побочных эффектов",
+    "Не влияет на тестирование",
+    "Требует больше моков"
+  ],
+  correct: [1],
+  explanation:
+    "Функциональный подход значительно упрощает тестирование, так как функции не зависят от внешнего состояния и дают предсказуемый результат.\n" +
+    "Это уменьшает необходимость в моках и сложных подготовках тестовой среды.\n" +
+    "Unit-тесты становятся проще и надежнее.\n" +
+    "Ошибка — наличие скрытых зависимостей, которые нарушают изоляцию тестов."
+},
+{
+  id: "oop-040",
+  topic: "Architecture",
+  question: "Как OOP влияет на масштабируемость системы?",
+  options: [
+    "Уменьшает масштабируемость",
+    "Увеличивает масштабируемость за счет структурирования через классы и абстракции",
+    "Не влияет",
+    "Только ухудшает производительность"
+  ],
+  correct: [1],
+  explanation:
+    "OOP позволяет структурировать систему через классы, интерфейсы и наследование, что упрощает добавление нового функционала.\n" +
+    "Это особенно полезно в крупных проектах с множеством сущностей и взаимодействий.\n" +
+    "Однако неправильное использование наследования может привести к жесткой связности.\n" +
+    "Ошибка — чрезмерная иерархия и сложные цепочки наследования."
+},
+{
+  id: "fp-041",
+  topic: "Functional Programming Advanced",
+  question: "Что такое эффект (effect) в функциональном программировании?",
+  options: [
+    "Любое вычисление",
+    "Любое взаимодействие с внешним миром (I/O, сеть, DOM, состояние)",
+    "Только DOM-операции",
+    "Только асинхронные функции"
+  ],
+  correct: [1],
+  explanation:
+    "Эффекты — это операции, которые взаимодействуют с внешним миром: API-запросы, работа с DOM, запись в localStorage.\n" +
+    "В FP эффекты стараются изолировать от чистой логики.\n" +
+    "Это делает систему более предсказуемой и тестируемой.\n" +
+    "Ошибка — смешивание эффектов и бизнес-логики в одном месте."
+},
+{
+  id: "fp-042",
+  topic: "Functional Programming Advanced",
+  question: "Что такое declarative vs imperative подход?",
+  options: [
+    "Они одинаковые",
+    "Declarative описывает ЧТО делать, imperative — КАК делать",
+    "Imperative быстрее",
+    "Declarative используется только в CSS"
+  ],
+  correct: [1],
+  explanation:
+    "Imperative подход описывает последовательность шагов для достижения результата.\n" +
+    "Declarative подход описывает, какой результат нужен, не указывая шаги.\n" +
+    "FP и React используют declarative стиль, что делает код более читаемым.\n" +
+    "Ошибка — попытка использовать imperative стиль там, где лучше declarative."
+},
+{
+  id: "oop-fp-043",
+  topic: "Hybrid Architecture",
+  question: "Как использовать OOP и FP вместе в одном проекте?",
+  options: [
+    "Использовать только один подход",
+    "Использовать OOP для структуры, FP для логики",
+    "Использовать только FP",
+    "Использовать только OOP"
+  ],
+  correct: [1],
+  explanation:
+    "В современных проектах часто используется гибридный подход: OOP применяется для описания структуры (классы, сущности), а FP — для обработки данных и бизнес-логики.\n" +
+    "Это позволяет сочетать сильные стороны обоих подходов.\n" +
+    "Пример: сервисы в OOP + чистые функции для обработки данных.\n" +
+    "Ошибка — жесткое разделение без учета реальных требований системы."
+},
+{
+  id: "fp-044",
+  topic: "Functional Programming Advanced",
+  question: "Что такое side-effect isolation?",
+  options: [
+    "Полное отсутствие побочных эффектов",
+    "Изоляция побочных эффектов от чистой логики",
+    "Удаление всех функций",
+    "Использование только классов"
+  ],
+  correct: [1],
+  explanation:
+    "Side-effect isolation — это практика отделения побочных эффектов от чистой бизнес-логики.\n" +
+    "Это позволяет тестировать и переиспользовать логику независимо от внешних систем.\n" +
+    "Используется в архитектурах вроде Redux и Clean Architecture.\n" +
+    "Ошибка — выполнение эффектов прямо внутри чистых функций."
+},
+{
+  id: "fp-045",
+  topic: "Functional Programming Advanced",
+  question: "Какие есть альтернативы мутации состояния в FP?",
+  options: [
+    "Глобальные переменные",
+    "Иммутабельные структуры данных и копирование",
+    "Использование классов",
+    "Использование DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Вместо мутации используется создание новых копий данных с изменениями.\n" +
+    "Это обеспечивает предсказуемость и облегчает отслеживание изменений.\n" +
+    "Используются spread, Object.assign и специализированные библиотеки.\n" +
+    "Ошибка — поверхностное копирование при наличии вложенных структур."
+},{
+  id: "oop-fp-046",
+  topic: "Advanced Architecture",
+  question: "Как влияние иммутабельности сказывается на производительности и как это оптимизируется?",
+  options: [
+    "Иммутабельность всегда замедляет систему без исключений",
+    "Иммутабельность не влияет на производительность",
+    "Иммутабельность может снижать производительность, но компенсируется через структурное разделение и shared references",
+    "Иммутабельность ускоряет все операции"
+  ],
+  correct: [2],
+  explanation:
+    "Иммутабельность действительно может приводить к дополнительным затратам памяти и времени из-за создания новых копий данных.\n" +
+    "Однако в реальных системах это компенсируется через техники structural sharing, при которых неизмененные части данных переиспользуются.\n" +
+    "Это особенно важно в UI-фреймворках, где shallow comparison позволяет эффективно определять изменения.\n" +
+    "Ошибка — глубокое копирование без необходимости, что приводит к значительным затратам памяти и CPU."
+},
+{
+  id: "fp-047",
+  topic: "Functional Programming Advanced",
+  question: "Что такое structural sharing и где оно применяется?",
+  options: [
+    "Полное копирование данных",
+    "Переиспользование неизмененных частей структуры данных при создании новых версий",
+    "Хранение данных в базе",
+    "Передача данных по сети"
+  ],
+  correct: [1],
+  explanation:
+    "Structural sharing — это техника, при которой при изменении структуры данных создается новая версия, но неизмененные части переиспользуются.\n" +
+    "Это значительно снижает нагрузку на память и ускоряет операции.\n" +
+    "Используется в immutable библиотеках, Redux Toolkit и persistent data structures.\n" +
+    "Ошибка — игнорирование структурного шаринга и создание полных копий данных."
+},
+{
+  id: "oop-fp-048",
+  topic: "Design Patterns",
+  question: "Как паттерны проектирования сочетаются с OOP и FP?",
+  options: [
+    "Паттерны используются только в OOP",
+    "Паттерны применяются только в FP",
+    "Паттерны проектирования применимы в обоих подходах, но реализуются по-разному",
+    "Паттерны устарели"
+  ],
+  correct: [2],
+  explanation:
+    "Паттерны проектирования (GoF) применяются как в OOP, так и в FP, но их реализация отличается.\n" +
+    "В OOP они чаще реализуются через классы и наследование, в FP — через функции и композицию.\n" +
+    "Например, Strategy pattern в FP реализуется через передачу функций.\n" +
+    "Ошибка — привязка паттернов исключительно к классам и игнорирование функционального стиля."
+},
+{
+  id: "fp-049",
+  topic: "Functional Programming Advanced",
+  question: "Что такое pipeline для асинхронных операций?",
+  options: [
+    "Использование только синхронных функций",
+    "Последовательная обработка асинхронных операций через Promise chain или async/await",
+    "Использование setTimeout",
+    "Работа только с DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Асинхронный pipeline позволяет выстраивать цепочки операций, где каждая следующая зависит от результата предыдущей.\n" +
+    "Это реализуется через Promise chaining или async/await.\n" +
+    "Позволяет писать асинхронный код в декларативном стиле.\n" +
+    "Ошибка — игнорирование обработки ошибок в цепочке (catch)."
+},
+{
+  id: "oop-fp-050",
+  topic: "Architecture",
+  question: "Как управлять состоянием в приложении с точки зрения OOP и FP?",
+  options: [
+    "Использовать только глобальные переменные",
+    "В OOP — через объекты и инкапсуляцию, в FP — через неизменяемые структуры и чистые функции",
+    "Использовать только DOM",
+    "Не управлять состоянием"
+  ],
+  correct: [1],
+  explanation:
+    "В OOP состояние хранится внутри объектов и управляется через методы, что обеспечивает инкапсуляцию.\n" +
+    "В FP состояние передается явно и изменяется через создание новых структур.\n" +
+    "В современных приложениях часто используется гибридный подход (например, Redux + компоненты).\n" +
+    "Ошибка — скрытое мутирование состояния, приводящее к трудноотслеживаемым багам."
+},
+{
+  id: "fp-051",
+  topic: "Functional Programming Advanced",
+  question: "Что такое алгебраические типы данных (ADT)?",
+  options: [
+    "Типы данных в JavaScript",
+    "Комбинации типов (sum и product types), используемые для моделирования данных",
+    "Типы для работы с DOM",
+    "Типы, связанные с классами"
+  ],
+  correct: [1],
+  explanation:
+    "ADT — это способ комбинирования типов данных через sum (объединение) и product (комбинация) типов.\n" +
+    "Пример sum type — Union в TypeScript, product — объект с полями.\n" +
+    "Это позволяет более точно моделировать доменные данные.\n" +
+    "Ошибка — игнорирование исчерпывающей обработки всех возможных случаев (exhaustiveness)."
+},
+{
+  id: "oop-fp-052",
+  topic: "Type Safety & FP",
+  question: "Как типизация помогает в функциональном программировании?",
+  options: [
+    "Не имеет значения",
+    "Помогает гарантировать корректность данных и функций на этапе компиляции",
+    "Ускоряет выполнение кода",
+    "Упрощает DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Статическая типизация позволяет проверять корректность кода до выполнения, что особенно важно в FP.\n" +
+    "Типы помогают описывать функции, ограничения и гарантии.\n" +
+    "Это уменьшает количество runtime-ошибок.\n" +
+    "Ошибка — игнорирование типов, что снижает надежность системы."
+},
+{
+  id: "fp-053",
+  topic: "Functional Programming Advanced",
+  question: "Что такое algebraic composition в FP?",
+  options: [
+    "Работа с математикой",
+    "Комбинирование функций с использованием математических законов",
+    "Работа с массивами",
+    "Создание классов"
+  ],
+  correct: [1],
+  explanation:
+    "Алгебраическая композиция — это построение функций с соблюдением математических законов (ассоциативность, идентичность).\n" +
+    "Это обеспечивает предсказуемость и корректность композиций.\n" +
+    "Используется в чистых FP-языках и библиотеках.\n" +
+    "Ошибка — нарушение законов композиции, что приводит к неожиданному поведению."
+},
+{
+  id: "oop-fp-054",
+  topic: "Advanced Comparison",
+  question: "Какой подход лучше подходит для масштабируемых frontend-приложений?",
+  options: [
+    "Только OOP",
+    "Только FP",
+    "Комбинация FP (для логики) и OOP (для структуры) в зависимости от контекста",
+    "Никакой"
+  ],
+  correct: [2],
+  explanation:
+    "Масштабируемые приложения обычно используют гибридный подход.\n" +
+    "FP применяется для обработки данных, UI и бизнес-логики.\n" +
+    "OOP — для организации сущностей, сервисов и инфраструктуры.\n" +
+    "Это позволяет сбалансировать читаемость, гибкость и расширяемость.\n" +
+    "Ошибка — попытка использовать один подход для всех задач."
+},{
+  id: "fp-055",
+  topic: "Functional Programming Advanced",
+  question: "Что такое referential transparency и почему это важно?",
+  options: [
+    "Способ работы с DOM",
+    "Свойство функции, при котором ее можно заменить результатом без изменения поведения программы",
+    "Метод оптимизации CSS",
+    "Тип данных"
+  ],
+  correct: [1],
+  explanation:
+    "Referential transparency означает, что выражение можно заменить его значением без изменения поведения программы.\n" +
+    "Это возможно только для чистых функций без побочных эффектов.\n" +
+    "Данное свойство упрощает рефакторинг, тестирование и оптимизацию кода.\n" +
+    "Ошибка — наличие скрытых зависимостей, которые нарушают это свойство."
+},
+{
+  id: "oop-fp-056",
+  topic: "Advanced Architecture",
+  question: "Как работает dependency injection в OOP и FP?",
+  options: [
+    "Только в OOP",
+    "Передача зависимостей извне как в OOP (через конструкторы), так и в FP (через параметры функций)",
+    "Только через глобальные переменные",
+    "Не используется в современных приложениях"
+  ],
+  correct: [1],
+  explanation:
+    "Dependency Injection (DI) — это способ передачи зависимостей извне, а не их создания внутри функции или класса.\n" +
+    "В OOP это реализуется через конструкторы или сеттеры.\n" +
+    "В FP — через передачу аргументов в функции.\n" +
+    "Это повышает тестируемость и снижает связанность.\n" +
+    "Ошибка — жесткое создание зависимостей внутри логики."
+},
+{
+  id: "fp-057",
+  topic: "Functional Programming Advanced",
+  question: "Что такое point-free стиль?",
+  options: [
+    "Стиль без функций",
+    "Стиль, в котором функции определяются без явного указания аргументов",
+    "Стиль только для CSS",
+    "Стиль в OOP"
+  ],
+  correct: [1],
+  explanation:
+    "Point-free стиль (также tacit programming) позволяет писать функции без явного указания их аргументов.\n" +
+    "Это достигается за счет композиции функций.\n" +
+    "Повышает декларативность и сокращает код.\n" +
+    "Ошибка — чрезмерное использование, что снижает читаемость."
+},
+{
+  id: "oop-fp-058",
+  topic: "Architecture",
+  question: "Как избежать избыточной абстракции в OOP?",
+  options: [
+    "Использовать больше классов",
+    "Делать глубокую иерархию",
+    "Применять абстракции только там, где есть реальная необходимость",
+    "Игнорировать SOLID"
+  ],
+  correct: [2],
+  explanation:
+    "Избыточная абстракция усложняет код и затрудняет его поддержку.\n" +
+    "Важно применять абстракции только тогда, когда есть реальная потребность в расширяемости.\n" +
+    "Следование принципам SOLID должно быть прагматичным.\n" +
+    "Ошибка — создание абстракций «на будущее» без текущей необходимости."
+},
+{
+  id: "fp-059",
+  topic: "Functional Programming Advanced",
+  question: "Что такое lazy evaluation?",
+  options: [
+    "Выполнение всех операций сразу",
+    "Отложенное вычисление выражений до момента их использования",
+    "Работа с UI",
+    "Асинхронные функции"
+  ],
+  correct: [1],
+  explanation:
+    "Lazy evaluation — это стратегия, при которой вычисление выражений откладывается до момента, когда результат действительно нужен.\n" +
+    "Позволяет оптимизировать производительность и избегать лишних вычислений.\n" +
+    "Используется в FP-языках и некоторых библиотечных структурах.\n" +
+    "Ошибка — неправильное управление потоками данных, приводящее к неожиданному порядку вычислений."
+},
+{
+  id: "fp-060",
+  topic: "Functional Programming Advanced",
+  question: "Как работают монады на практическом уровне?",
+  options: [
+    "Как классы",
+    "Как контейнеры для значений с правилами обработки (map, flatMap)",
+    "Как DOM элементы",
+    "Как функции без аргументов"
+  ],
+  correct: [1],
+  explanation:
+    "Монады — это абстракция для работы с вычислениями, которые могут включать контекст (ошибки, асинхронность, null).\n" +
+    "Они позволяют последовательно связывать операции с помощью методов вроде map и flatMap.\n" +
+    "Примеры: Promise, Maybe, Either.\n" +
+    "Ошибка — попытка воспринимать монады как строгую теоретическую концепцию без практического применения."
+},
+{
+  id: "oop-fp-061",
+  topic: "Advanced Patterns",
+  question: "Что такое inversion of control (IoC)?",
+  options: [
+    "Контроль остается у функций",
+    "Передача управления внешнему контейнеру или фреймворку",
+    "Удаление классов",
+    "Работа с массивами"
+  ],
+  correct: [1],
+  explanation:
+    "Inversion of Control означает, что управление потоком выполнения передается внешнему компоненту.\n" +
+    "Это часто реализуется через DI-контейнеры и фреймворки.\n" +
+    "Позволяет снизить связанность компонентов.\n" +
+    "Ошибка — чрезмерная зависимость от контейнера, усложняющая отладку."
+},
+{
+  id: "fp-062",
+  topic: "Functional Programming Advanced",
+  question: "Что такое currying и partial application?",
+  options: [
+    "Одинаковые понятия",
+    "Currying — преобразование функции, partial application — частичное применение аргументов",
+    "Оба только для OOP",
+    "Оба для работы с DOM"
+  ],
+  correct: [1],
+  explanation:
+    "Currying преобразует функцию с несколькими аргументами в последовательность функций с одним аргументом.\n" +
+    "Partial application фиксирует часть аргументов функции заранее.\n" +
+    "Оба подхода используются для создания более гибких и переиспользуемых функций.\n" +
+    "Ошибка — путаница между этими двумя концепциями."
+},
+{
+  id: "oop-fp-063",
+  topic: "Architecture",
+  question: "Как выбрать между OOP и FP в реальном проекте?",
+  options: [
+    "Использовать только FP",
+    "Использовать только OOP",
+    "Опираться на требования: сложность данных, масштабируемость, тестируемость",
+    "Случайно"
+  ],
+  correct: [2],
+  explanation:
+    "Выбор подхода зависит от конкретной задачи.\n" +
+    "FP хорошо подходит для обработки данных и чистой логики.\n" +
+    "OOP — для моделирования сложных сущностей и взаимодействий.\n" +
+    "На практике чаще используется гибридный подход.\n" +
+    "Ошибка — догматичный выбор без учета контекста задачи."
+}
 ];
