@@ -64,7 +64,7 @@ export const blocks = [
       "Timers",
       "Proxy",
       "Memory",
-      "hard"
+      "hard",
     ],
     color: "linear-gradient(135deg, #F7DF1E 0%,  #6C63FF 100%)",
   },
@@ -163,7 +163,12 @@ export const blocks = [
     id: "typescript",
     name: "13. TypeScript",
     description: "Типы, интерфейсы, обобщения и утилиты",
-    topics: ["Types", "Interfaces", "Generics", "Utility Types", "Decorators"],
+    topics: [
+      "Core Type System",
+      "Advanced Types & Generics",
+      "Type Safety & Narrowing",
+      "Architecture & Ecosystem",
+    ],
     color: "linear-gradient(135deg, #764ABC 0%, #2c9b31 50%)",
   },
   {
